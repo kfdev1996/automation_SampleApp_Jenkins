@@ -124,3 +124,5 @@ Kaíque Fernandes
 ## ✅ Licença
 
 Este projeto está sob a licença MIT.
+
+## (Foi adicionado outro arquivo chamado preencherInfoNovo_Tricentis.cy.js com melhoria de estrutura em relação ao código antigo preencherInfo_Tricentis.cy.js).
