@@ -5,7 +5,7 @@ Cypress.Commands.add('generateUserData', () => {
   const user = {
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
-    birthDate: faker.date.between({ from: '1954-01-01', to: '2007-12-31' }).toLocaleDateString('en-US'),
+    birthDate: faker.date.between({ from: '1955-01-01', to: '2007-12-31' }).toLocaleDateString('en-US'),
     address: {
       street: faker.location.streetAddress(),
       city: faker.location.city(),
