@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kfdev1996/automation_SampleApp_Jenkins/issues"
   },
-  "homepage": "https://github.com/kfdev1996/automation_SampleApp_Jenkins#readme"
+  "homepage": "https://github.com/kfdev1996/automation_SampleApp_Jenkins#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0"
+  }
 }
