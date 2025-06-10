@@ -1,0 +1,20 @@
+{
+  "name": "automation_sampleapp",
+  "version": "1.0.0",
+  "description": "Este projeto automatiza o preenchimento de formulários no site **Sample App Tricentis**, utilizando **Cypress** para automação de testes e **Faker.js** para geração dinâmica de dados.",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kfdev1996/automation_SampleApp_Jenkins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kfdev1996/automation_SampleApp_Jenkins/issues"
+  },
+  "homepage": "https://github.com/kfdev1996/automation_SampleApp_Jenkins#readme"
+}
