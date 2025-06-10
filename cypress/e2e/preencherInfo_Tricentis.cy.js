@@ -2,7 +2,7 @@ describe('Preencher informações - Sample App Tricentis', () => {
   
   before(() => {
           
-        cy.acessarSitee();
+        cy.acessarSite();
 
 });
   it('Preenchendo informações..', () => {
