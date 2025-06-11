@@ -18,9 +18,9 @@ pipeline {
 
         stage('Instalar dependências') {
             steps {
-                sh 'rm -rf node_modules package-lock.json' // limpeza opcional
-                sh 'npm ci'
-                sh 'npm install cypress --save-dev'
+                sh 'rm -rf node_modules'
+                sh 'npm install'
+                 sh 'npm install cypress --save-dev'
             }
         }
 
