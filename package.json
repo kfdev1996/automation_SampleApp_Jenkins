@@ -4,7 +4,8 @@
   "description": "Este projeto automatiza o preenchimento de formulários no site **Sample App Tricentis**, utilizando **Cypress** para automação de testes e **Faker.js** para geração dinâmica de dados.",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run --env allure=true",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/kfdev1996/automation_SampleApp_Jenkins#readme",
   "devDependencies": {
-    "@faker-js/faker": "^9.8.0"
+    "@faker-js/faker": "^9.8.0",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.0",
+    "cypress": "^14.4.1"
   }
 }

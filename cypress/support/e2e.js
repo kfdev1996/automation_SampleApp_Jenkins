@@ -16,3 +16,4 @@
 // Import commands.js using ES2015 syntax:
 import './commands/antigos';
 import './commands/novos';
+import '@shelex/cypress-allure-plugin';
