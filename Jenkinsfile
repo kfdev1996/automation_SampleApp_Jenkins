@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'Node 22.13.1' 
+        nodejs 'Node 22.13.1'
     }
 
     environment {
-        
         CYPRESS_BASE_URL = 'https://opensource-demo.orangehrmlive.com'
     }
 
@@ -19,15 +18,19 @@ pipeline {
 
         stage('Instalar dependências') {
             steps {
-                sh 'npm install'
+                sh 'rm -rf node_modules package-lock.json' // limpeza opcional
+                sh 'npm ci'
                 sh 'npm install cypress --save-dev'
             }
         }
 
         stage('Preparar Cypress') {
             steps {
-                
-                sh 'npx cypress install'
+                // Garante permissão de execução ao binário do Cypress e trata erro de permissão
+                sh '''
+                    chmod +x ./node_modules/.bin/cypress || true
+                    npx cypress install || npx cypress verify
+                '''
             }
         }
 
@@ -38,7 +41,7 @@ pipeline {
                     npx cypress info
 
                     echo "Executando testes com Cypress + Electron..."
-                    npx cypress run --browser electron --config video=true,chromeWebSecurity=false,viewportWidth=1280,viewportHeight=720
+                    npx cypress run --browser electron --config video=true,chromeWebSecurity=false,viewportWidth=1280,viewportHeight=720 --env allure=true
                 '''
             }
         }
