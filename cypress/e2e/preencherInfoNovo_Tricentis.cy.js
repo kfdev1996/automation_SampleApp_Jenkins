@@ -1,4 +1,4 @@
-describe('Preencher informações - Sample App Tricentis', () => {
+describe('Preencher informações - Sample App Tricentiss', () => {
   it('Preenchendo informações..', () => {
     // Arrange - Preparação
       cy.acessarSite();
