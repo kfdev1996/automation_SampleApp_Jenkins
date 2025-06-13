@@ -34,14 +34,15 @@ node -v
 
 ```bash
 git clone https://github.com/kfdev1996/automation_SampleApp_Jenkins.git
-cd seu-repositorio
-```
+cd seu-repositório
 
 2. Instale as dependências:
 
 ```bash
 npm install
 ```
+
+---
 
 ## ✅ Execução dos Testes
 
@@ -118,24 +119,85 @@ npx cypress run
 
 > 💡 Use o plugin NodeJS no Jenkins com a versão **22.13.1**
 
-## ✅ Descrição do Fluxo Automatizado
+---
 
-1. **Acessar o site**: https://sampleapp.tricentis.com/101/app.php
-2. **Preencher informações do veículo**.
-3. **Preencher informações do segurado**.
-4. **Preencher informações do produto**.
-5. **Validar opções de preços**: Silver, Gold, Platinum, Ultimate
+## ✅ GitHub Actions (opcional)
 
-## ✅ Observações Importantes
+Se desejar rodar também via GitHub Actions, use:
 
-- Todas as informações são geradas automaticamente via **Faker.js**.
-- A data de início do seguro é sempre ajustada para **dois meses no futuro**.
-- O projeto está compatível com **Node.js 22.13.1**.
+```yaml
+name: Run Cypress Tests
 
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npx cypress run
+```
+
+
+## 📊 Gerando e Visualizando Relatórios com Allure
+
+Este projeto utiliza o **Allure Report** para geração de relatórios interativos dos testes.
+
+### ✅ Instalação do Allure
+
+Você pode instalar o Allure de duas formas:
+
+#### ▶️ Usando NPM (recomendado)
+
+```bash
+npm install -g allure-commandline --save-dev
+```
+
+#### ▶️ Usando Chocolatey (Windows)
+
+```bash
+choco install allure
+```
+
+Verifique a instalação com:
+
+```bash
+allure --version
+```
+
+---
+
+### ▶️ Executando o relatório
+
+Após rodar os testes, execute:
+
+```bash
+allure serve allure-results
+```
+
+Isso irá abrir o navegador automaticamente com o relatório interativo.
+
+#### Alternativa (gerar manualmente):
+
+```bash
+allure generate allure-results --clean -o allure-report
+allure open allure-report
+```
+
+> 💡 Se estiver usando o plugin `@shelex/cypress-allure-plugin`, verifique se ele está corretamente configurado no `cypress.config.js` e se a pasta `allure-results` está sendo gerada.
+
+---
 
 ## ✅ Autor
 
 Kaíque Fernandes  
 [LinkedIn](https://www.linkedin.com/in/kaiquefernandess)  
 [GitHub](https://github.com/kfdev1996)
+
+---
+
 

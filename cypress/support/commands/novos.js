@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-// ✅ Gera dados de usuário e veículo
+// Gera dados de usuário e veículo
 Cypress.Commands.add('generateUserData', () => {
   const user = {
     firstName: faker.person.firstName(),
@@ -26,12 +26,12 @@ Cypress.Commands.add('generateUserData', () => {
   return cy.wrap(user, { log: false });
 });
 
-// ✅ Acessar o site
+// Acessar o site
 Cypress.Commands.add('novoAcessarSite', () => {
   cy.visit("https://sampleapp.tricentis.com/101/app.php");
 });
 
-// ✅ Preencher info do veículo
+// Preencher info do veículo
 Cypress.Commands.add('novoPreencherInfoVehicle', (vehicle) => {
   cy.location('pathname').should('eq', '/101/app.php');
   cy.get("#make").select('Porsche');
@@ -50,7 +50,7 @@ Cypress.Commands.add('novoPreencherInfoVehicle', (vehicle) => {
   cy.contains('Next').click();
 });
 
-// ✅ Preencher info do segurado
+// Preencher info do segurado
 Cypress.Commands.add('novoPreencherInfoInsurant', (user) => {
   cy.get('#firstname').type(user.firstName);
   cy.get('#lastname').type(user.lastName);
@@ -66,7 +66,7 @@ Cypress.Commands.add('novoPreencherInfoInsurant', (user) => {
   cy.get('#nextenterproductdata').click();
 });
 
-// ✅ Preencher info do produto
+// Preencher info do produto
 Cypress.Commands.add('novoPreencherInfoProduct', () => {
   const today = new Date();
   today.setMonth(today.getMonth() + 2);
@@ -81,7 +81,7 @@ Cypress.Commands.add('novoPreencherInfoProduct', () => {
   cy.get('#nextselectpriceoption').should('be.visible').click();
 });
 
-// ✅ Selecionar opções de preço
+// Selecionar opções de preço
 Cypress.Commands.add('novoSelectPriceOption', () => {
   ['Silver', 'Gold', 'Platinum', 'Ultimate'].forEach(option => {
     cy.contains(option).should('be.visible');
