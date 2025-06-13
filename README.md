@@ -1,7 +1,8 @@
+# 🚗 Automação de Testes com Cypress - Sample App Tricentis + Jenkins (CI Docker)
 
-# 🚗 Automação de Testes com Cypress - Sample App Tricentis
+Este projeto automatiza o preenchimento de formulários no site **Sample App Tricentis**, utilizando **Cypress** para automação de testes, **Faker.js** para geração dinâmica de dados e **Jenkins via Docker** para CI local.
 
-Este projeto automatiza o preenchimento de formulários no site **Sample App Tricentis**, utilizando **Cypress** para automação de testes e **Faker.js** para geração dinâmica de dados.
+---
 
 ## ✅ Tecnologias Utilizadas
 
@@ -9,25 +10,30 @@ Este projeto automatiza o preenchimento de formulários no site **Sample App Tri
 - Cypress
 - Faker.js
 - JavaScript ES6
+- Jenkins (Docker)
+
+---
 
 ## ✅ Pré-requisitos
 
-- **Node.js** versão **22.13.1**
+- [Node.js](https://nodejs.org/) versão **22.13.1**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- Git
 
-Para verificar se possui a versão correta:
+Verifique se possui o Node instalado:
 
 ```bash
 node -v
 ```
 
-Se não tiver, instale pelo [site oficial do Node.js](https://nodejs.org/en) ou utilize um gerenciador de versões como [nvm](https://github.com/nvm-sh/nvm).
+---
 
 ## ✅ Instalação
 
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/kfdev1996/automation_SampleApp
+git clone https://github.com/kfdev1996/automation_SampleApp_Jenkins.git
 cd seu-repositorio
 ```
 
@@ -37,37 +43,80 @@ cd seu-repositorio
 npm install
 ```
 
-### Dependências utilizadas
+## ✅ Execução dos Testes
 
-- Cypress:
-
-```bash
-npm install cypress --save-dev
-```
-
-- Faker.js:
-
-```bash
-npm install @faker-js/faker --save-dev
-```
-
-## ✅ Como Rodar os Testes
-
-1. Abra o Cypress Test Runner:
+### Modo interativo:
 
 ```bash
 npx cypress open
 ```
 
-2. No painel que abrir, selecione o arquivo de teste correspondente para executar.
+### Modo headless:
+
+```bash
+npx cypress run
+```
+
+---
 
 ## ✅ Estrutura do Projeto
 
-- `acessarSite`: Abre o site.
-- `preencherInfoVehicle`: Preenche informações sobre o veículo.
-- `preencherInfoInsurant`: Preenche informações do segurado.
-- `preencherInfoProduct`: Preenche informações do produto.
-- `selectPriceOption`: Valida as opções de preço.
+- `acessarSite`: Acessa a página inicial.
+- `preencherInfoVehicle`: Preenche dados do veículo.
+- `preencherInfoInsurant`: Preenche dados do segurado.
+- `preencherInfoProduct`: Preenche dados do seguro.
+- `selectPriceOption`: Valida as opções de preços disponíveis.
+
+---
+
+---
+
+## 🐳 Como instalar o Docker
+
+O Docker é necessário para executar o Jenkins em ambiente local via container.
+
+### 🔗 Download do Docker
+
+Acesse o link abaixo de acordo com seu sistema operacional:
+
+- [Docker para Windows](https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe)
+- [Docker para macOS](https://www.docker.com/products/docker-desktop)
+- [Docker para Linux](https://docs.docker.com/engine/install/)
+
+> Após a instalação, abra o Docker Desktop e mantenha-o em execução.
+
+Verifique se está funcionando com:
+
+```bash
+docker --version
+```
+
+Você deverá ver algo como:
+
+```
+Docker version 24.x.x, build xxxxx
+```
+
+## ✅ Jenkins + Docker para CI Local
+
+### Subindo Jenkins com Docker
+
+```bash
+docker run -d -p 8080:8080 -p 50000:50000 --name jenkins   -v jenkins_home:/var/jenkins_home   jenkins/jenkins:lts
+```
+
+Acesse: http://localhost:8080
+
+### Pipeline Jenkins (freestyle ou shell)
+
+Configure um projeto no Jenkins com os seguintes passos:
+
+```bash
+npm install
+npx cypress run
+```
+
+> 💡 Use o plugin NodeJS no Jenkins com a versão **22.13.1**
 
 ## ✅ Descrição do Fluxo Automatizado
 
@@ -77,43 +126,12 @@ npx cypress open
 4. **Preencher informações do produto**.
 5. **Validar opções de preços**: Silver, Gold, Platinum, Ultimate
 
-## ✅ Exemplo de Execução no Código
-
-```javascript
-describe('Preencher informações - Sample App Tricentis', () => {
-  
-  before(() => {
-    cy.acessarSite();
-  });
-
-  it('Preenchendo informações..', () => {
-    cy.preencherInfoVehicle();
-    cy.preencherInfoInsurant();   
-    cy.preencherInfoProduct();
-    cy.selectPriceOption();
-  });
-});
-```
-
 ## ✅ Observações Importantes
 
 - Todas as informações são geradas automaticamente via **Faker.js**.
 - A data de início do seguro é sempre ajustada para **dois meses no futuro**.
 - O projeto está compatível com **Node.js 22.13.1**.
 
-## ✅ Dicas
-
-- Para atualizar o Cypress:
-
-```bash
-npx cypress verify
-```
-
-- Para rodar em modo headless:
-
-```bash
-npx cypress run
-```
 
 ## ✅ Autor
 
@@ -121,8 +139,3 @@ Kaíque Fernandes
 [LinkedIn](https://www.linkedin.com/in/kaiquefernandess)  
 [GitHub](https://github.com/kfdev1996)
 
-## ✅ Licença
-
-Este projeto está sob a licença MIT.
-
-## (Foi adicionado outro arquivo chamado preencherInfoNovo_Tricentis.cy.js com melhoria de estrutura em relação ao código antigo preencherInfo_Tricentis.cy.js).
