@@ -26,7 +26,7 @@ pipeline {
 
         stage('Preparar Cypress') {
             steps {
-                // Garante permissão de execução ao binário do Cypress e trata erro de permissão
+                
                 sh '''
                     chmod +x ./node_modules/.bin/cypress || true
                     npx cypress install || npx cypress verify
