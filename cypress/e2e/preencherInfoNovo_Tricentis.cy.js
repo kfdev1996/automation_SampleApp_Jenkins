@@ -1,5 +1,5 @@
-describe('Preencher informações - Sample App TricentisSSSS', () => {
-  it('Preenchendo informações..', () => {
+describe('Preencher informações - Sample App TricentisSS', () => {
+  it('Preenchendo informações com o novo fluxo..', () => {
     // Arrange - Preparação
       cy.acessarSite();
       cy.generateUserData().then((user) => {
